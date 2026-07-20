@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "6XpNw7KRACA=",
+  "success": true,
+  "projectFilePath": "/Users/gorkemege/Documents/GitHub/MiniBank/MiniBank/MiniBank.csproj",
+  "expectedPackageFiles": [
+    "/Users/gorkemege/.nuget/packages/microsoft.aspnetcore.openapi/10.0.6/microsoft.aspnetcore.openapi.10.0.6.nupkg.sha512",
+    "/Users/gorkemege/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "'Microsoft.OpenApi' 2.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-v5pm-xwqc-g5wc güvenlik açığı var",
+      "projectPath": "/Users/gorkemege/Documents/GitHub/MiniBank/MiniBank/MiniBank.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/gorkemege/Documents/GitHub/MiniBank/MiniBank/MiniBank.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
