@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MiniBank.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=minibank.db"));
 
 var app = builder.Build();
 
