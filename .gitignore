@@ -22,3 +22,4 @@ obj/
 *.nupkg
 **/packages/*
 !**/packages/build/
+minibank.db*
