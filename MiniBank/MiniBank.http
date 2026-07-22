@@ -1,12 +1,5 @@
 @MiniBank_HostAddress = http://localhost:5043
 
-POST http://localhost:5043/api/customer
-Content-Type: application/json
+DELETE http://localhost:5043/api/customer/999
 
-{
-  "firstName": "Görkem Ege",
-  "lastName": "Zor",
-  "email": "ornek@gmail.com",
-  "password": "sifre123",
-  "birthDate": "2003-05-15"
-}
+

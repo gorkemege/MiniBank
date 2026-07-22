@@ -46,4 +46,49 @@ public class CustomerController : ControllerBase
 
         return Ok(customer);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(customer);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, UpdateCustomerDto dto)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        customer.FirstName = dto.FirstName;
+        customer.LastName = dto.LastName;
+        customer.Email = dto.Email;
+
+        await _context.SaveChangesAsync();
+        return Ok(customer);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        _context.Customers.Remove(customer);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }
