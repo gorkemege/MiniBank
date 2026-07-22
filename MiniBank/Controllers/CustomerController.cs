@@ -24,7 +24,18 @@ public class CustomerController : ControllerBase
     {
         var customers = await _context.Customers.ToListAsync();
 
-        return Ok(customers);
+        var dtos = customers.Select(c => new CustomerDto
+        {
+            Id = c.Id,
+            FirstName = c.FirstName,
+            LastName = c.LastName,
+            Email = c.Email,
+            BirthDate = c.BirthDate,
+            CustomerNo = c.CustomerNo,
+            RegisterDate = c.RegisterDate
+        }).ToList();
+
+        return Ok(dtos);
     }
 
     [HttpPost]
@@ -44,7 +55,18 @@ public class CustomerController : ControllerBase
         _context.Customers.Add(customer);
         await _context.SaveChangesAsync();
 
-        return Ok(customer);
+        var customerDto = new CustomerDto
+        {
+            Id = customer.Id,
+            FirstName = customer.FirstName,
+            LastName = customer.LastName,
+            BirthDate = customer.BirthDate,
+            CustomerNo = customer.CustomerNo,
+            Email = customer.Email,
+            RegisterDate = customer.RegisterDate
+        };
+
+        return Ok(customerDto);
     }
 
     [HttpGet("{id}")]
@@ -56,8 +78,19 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
+        
+        var dto = new CustomerDto
+        {
+            Id = customer.Id,
+            FirstName = customer.FirstName,
+            LastName = customer.LastName,
+            BirthDate = customer.BirthDate,
+            CustomerNo = customer.CustomerNo,
+            Email = customer.Email,
+            RegisterDate = customer.RegisterDate
+        };
 
-        return Ok(customer);
+        return Ok(dto);
     }
 
     [HttpPut("{id}")]
@@ -74,7 +107,19 @@ public class CustomerController : ControllerBase
         customer.Email = dto.Email;
 
         await _context.SaveChangesAsync();
-        return Ok(customer);
+
+        var customerDto = new CustomerDto
+        {
+            Id = customer.Id,
+            FirstName = customer.FirstName,
+            LastName = customer.LastName,
+            BirthDate = customer.BirthDate,
+            CustomerNo = customer.CustomerNo,
+            Email = customer.Email,
+            RegisterDate = customer.RegisterDate
+        };
+            
+        return Ok(customerDto);
     }
 
     [HttpDelete("{id}")]
@@ -90,5 +135,6 @@ public class CustomerController : ControllerBase
         _context.Customers.Remove(customer);
         await _context.SaveChangesAsync();
         return NoContent();
+        
     }
 }

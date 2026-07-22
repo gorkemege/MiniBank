@@ -1,5 +1,8 @@
 @MiniBank_HostAddress = http://localhost:5043
 
-DELETE http://localhost:5043/api/customer/999
+GET http://localhost:5043/api/customer/2
+Content-Type: application/json
+
+
 
 
